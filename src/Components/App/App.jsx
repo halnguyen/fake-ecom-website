@@ -1,10 +1,11 @@
 // React
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 // stylesheets
 import '../../Stylesheet/css/App.css';
 // Components
 import { Navbar } from '../Navbar/Navbar.jsx';
 import { ProductPictures } from '../../Containers/ProductPictures/ProductPictures.jsx';
+import { AddToCard } from '../../Containers/AddToCard/AddToCard';
 // Import source images
 import Logo from '../../images/logo.svg';
 import MenuIcon from '../../images/icon-menu.svg';
@@ -16,6 +17,26 @@ function App() {
     setOpenNav(prevState => !prevState);
     console.log(openNav);
   };
+
+  // Pricing
+  const [quantity, setQuantity] = useState(0);
+  const [price, setPrice] = useState(250);
+  const [sale, setSale] = useState(0.5);
+  const [finalPrice, setFinalPrice] = useState(0);
+
+  // Handle Add to cart
+  const [cart, setCart] = useState({});
+  const handleSubmit = (quantity, price) => {
+    setCart(prevCart => {
+      return { };
+    });
+  };
+
+  useEffect(() => console.log(cart), [cart]); // for the buggo
+
+  useEffect(() => {
+    setFinalPrice(() => price * sale);
+  }, [sale, price])
 
   return (
     <div className="App">
@@ -51,21 +72,16 @@ function App() {
             </article>
 
             <section className="price">
-              <div className="discounted-price">$125.00</div>
-              <div className="discounted-percentage">50%</div>
-              <div className="full-price">$250.00</div>
+              <div className="discounted-price">${finalPrice.toFixed(2)}</div>
+              <div className="discounted-percentage">{sale * 100}%</div>
+              <div className="full-price">${price.toFixed(2)}</div>
             </section>
 
             <section className="add-to-card">
-              <div className="quantity">
-                button
-                field
-                button
-              </div>
-
-              <div className="add-to-card">
-                button
-              </div>
+              <AddToCard 
+                price={finalPrice}
+                onSubmit={handleSubmit}
+              />
             </section>
 
           </section>
