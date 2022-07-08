@@ -1,22 +1,16 @@
 // React
 import React, { useState, useEffect } from 'react';
 // stylesheets
-import '../../Stylesheet/css/App.css';
+import '@root/Stylesheet/css/App.css';
 // Components
-import { Navbar } from '../Navbar/Navbar.jsx';
-import { ProductPictures } from '../../Containers/ProductPictures/ProductPictures.jsx';
-import { AddToCard } from '../../Containers/AddToCard/AddToCard';
+import { Navbar } from '@root/Components/Navbar/Navbar.jsx';
+import { ProductPictures } from '@root/Containers/ProductPictures/ProductPictures.jsx';
+import { AddToCard } from '@root/Containers/AddToCard/AddToCard';
 // Import source images
-import Logo from '$ROOT/images/logo.svg';
-import MenuIcon from '$ROOT/images/icon-menu.svg';
 
 
 function App() {
   const [openNav, setOpenNav] = useState(false);
-  const menuToggle = () => {
-    setOpenNav(prevState => !prevState);
-    console.log(openNav);
-  };
 
   // Pricing
   const [quantity, setQuantity] = useState(0);
@@ -41,13 +35,7 @@ function App() {
   return (
     <div className="App">
       <header>
-        <div className="mobile-menu" onClick={menuToggle}>
-          <img src={MenuIcon} alt="menu icon" />
-        </div>
-        <div className="logo">
-          <img src={Logo} alt="company logo" />
-        </div>
-        <Navbar isOpen={openNav}/>
+        <Navbar setOpenNav={setOpenNav} isOpen={openNav}/>
       </header>
       <main>
         <div className="container">
@@ -78,7 +66,7 @@ function App() {
             </section>
 
             <section className="add-to-card">
-              <AddToCard 
+              <AddToCard
                 price={finalPrice}
                 onSubmit={handleSubmit}
               />

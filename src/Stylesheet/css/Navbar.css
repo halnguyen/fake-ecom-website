@@ -1,8 +1,78 @@
-nav {
+/* Primary */
+/* Neutral */
+/* - Black (with 75% opacity for lightbox background): hsl(0, 0%, 0%) */
+.nav-bar {
   display: flex;
   justify-content: space-between;
   align-items: center;
   width: 100%;
+}
+.nav-bar .nav-links {
+  display: flex;
+}
+.nav-bar .nav-links a {
+  text-decoration: none;
+  color: hsl(26deg, 100%, 55%);
+}
+
+.mobile-menu {
+  display: none;
+}
+
+@media only screen and (max-width: 430px) {
+  .mobile-menu {
+    display: block;
+    position: absolute;
+    top: 1.5em;
+    left: 1em;
+    z-index: 4;
+  }
+  .nav-bar {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    isolation: isolate;
+  }
+  .nav-bar .logo {
+    padding-left: 3em;
+    position: relative;
+  }
+  .nav-bar .cart-section {
+    display: flex;
+    align-items: center;
+  }
+  .nav-bar .cart-section > * {
+    margin: 0.5em 1em;
+  }
+  .nav-bar .profile {
+    overflow: hidden;
+    height: 3em;
+  }
+  .nav-bar .profile img {
+    height: 100%;
+    width: auto;
+  }
+  .nav-bar .nav-links {
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    transform: translateX(-100%);
+    transition: transform 250ms ease;
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 65vw;
+    background-color: white;
+    padding: 3em 0;
+  }
+  .nav-bar .nav-links div {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
 }
 
 /*# sourceMappingURL=Navbar.css.map */
