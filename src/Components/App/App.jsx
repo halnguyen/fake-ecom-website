@@ -7,8 +7,8 @@ import { Navbar } from '../Navbar/Navbar.jsx';
 import { ProductPictures } from '../../Containers/ProductPictures/ProductPictures.jsx';
 import { AddToCard } from '../../Containers/AddToCard/AddToCard';
 // Import source images
-import Logo from '../../images/logo.svg';
-import MenuIcon from '../../images/icon-menu.svg';
+import Logo from '$ROOT/images/logo.svg';
+import MenuIcon from '$ROOT/images/icon-menu.svg';
 
 
 function App() {

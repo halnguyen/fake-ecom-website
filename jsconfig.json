@@ -1,0 +1,8 @@
+{
+	"compilierOptions": {
+		"baseUrl": ".",
+		"path": {
+			"$ROOT/*": ["./src/*"]
+		}
+	}
+}
